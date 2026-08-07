@@ -1,26 +1,141 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fa;
+  color: #17202a;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: #17202a;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  background: none;
+  color: #666;
+}
+
+section {
+  padding: 100px 0;
+}
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 1;
+  margin: 15px 0 25px;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.hero-text {
+  font-size: 22px;
+}
+
+.hero a {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 25px;
+  padding: 13px 22px;
+  text-decoration: none;
+  border: 1px solid #17202a;
+  color: #17202a;
+}
+
+.hero a:hover {
+  background: #17202a;
+  color: white;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  padding: 30px;
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.project-number {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 52px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
 }
