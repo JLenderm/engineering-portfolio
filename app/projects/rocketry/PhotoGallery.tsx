@@ -1,28 +1,24 @@
+
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 const photos = [
   {
-    src: "/projects/rocketry/Team_photo.JPEG",
-    alt: "Rocketry team with completed rocket",
-    caption: "Rocketry team with the completed vehicle prior to flight.",
+    src: "/images/approval.JPG",
+    title: "Rocket Approval",
   },
   {
-    src: "/projects/rocketry/approval.JPG",
-    alt: "Rocket approval station",
-    caption: "Flight-readiness approval and inspection process.",
+    src: "/images/Data-Retrieval.JPG",
+    title: "Data Retrieval",
   },
   {
-    src: "/projects/rocketry/Review_station.jpeg",
-    alt: "Rocket design review station",
-    caption: "Design review and preparation prior to flight.",
+    src: "/images/Review_station.jpeg",
+    title: "Review Station",
   },
   {
-    src: "/projects/rocketry/Data-Retrieval.JPG",
-    alt: "Post-flight data retrieval",
-    caption: "Post-flight recovery and retrieval of onboard flight data.",
+    src: "/images/Team_photo.JPEG",
+    title: "Rocket Team",
   },
 ];
 
@@ -38,51 +34,59 @@ export default function PhotoGallery() {
   };
 
   return (
-    <div className="photo-carousel">
+    <section className="photo-gallery">
+      <div className="gallery-window">
+        <div
+          className="gallery-track"
+          style={{
+            transform: `translateX(-${current * 100}%)`,
+          }}
+        >
+          {photos.map((photo, index) => (
+            <div className="gallery-slide" key={photo.src}>
+              <img
+                src={photo.src}
+                alt={photo.title}
+                className="gallery-image"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
 
       <button
-        className="carousel-button left"
+        className="gallery-button gallery-button-left"
         onClick={previous}
         aria-label="Previous photo"
       >
-        ←
+        ‹
       </button>
 
-      <div className="carousel-image">
-        <Image
-          src={photos[current].src}
-          alt={photos[current].alt}
-          width={1200}
-          height={800}
-          priority
-        />
-      </div>
-
       <button
-        className="carousel-button right"
+        className="gallery-button gallery-button-right"
         onClick={next}
         aria-label="Next photo"
       >
-        →
+        ›
       </button>
 
-      <div className="carousel-caption">
-        <p>{photos[current].caption}</p>
+      <div className="gallery-caption">
+        {photos[current].title}
       </div>
 
-      <div className="carousel-dots">
+      <div className="gallery-dots">
         {photos.map((_, index) => (
           <button
             key={index}
-            className={`carousel-dot ${
-              index === current ? "active" : ""
-            }`}
             onClick={() => setCurrent(index)}
-            aria-label={`View photo ${index + 1}`}
+            className={`gallery-dot ${
+              current === index ? "active" : ""
+            }`}
+            aria-label={`Go to photo ${index + 1}`}
           />
         ))}
       </div>
-
-    </div>
+    </section>
   );
 }
+
