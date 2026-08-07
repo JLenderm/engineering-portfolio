@@ -66,33 +66,7 @@ export default function Home() {
     responsibilities and collaborating with teams.
   </p>
 </div>
-        <div className="project-grid">
-          <div className="project-card">
-            <p className="project-number">01</p>
-            <h3>Rocketry</h3>
-            <p>
-              Hands-on experience designing, building, and testing rockets
-              through rocketry projects and competitions.
-            </p>
-          </div>
 
-          <div className="project-card">
-            <p className="project-number">02</p>
-            <h3>CAD & Mechanical Design</h3>
-            <p>
-              Engineering designs and 3D models created using Fusion 360.
-            </p>
-          </div>
-
-          <div className="project-card">
-            <p className="project-number">03</p>
-            <h3>Future Projects</h3>
-            <p>
-              College engineering projects, simulations, programming,
-              and aerospace design work will be added here.
-            </p>
-          </div>
-        </div>
       </section>
 
       <section id="about">
