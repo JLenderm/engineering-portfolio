@@ -31,6 +31,13 @@ export default function Home() {
 
         <div>
           <a href="#projects">View My Projects</a>
+
+<a 
+  href="/Jonah_Lenderman_Resume.pdf"
+  target="_blank"
+>
+  Resume
+</a>
           <a href="#about">About Me</a>
         </div>
       </section>
@@ -39,7 +46,11 @@ export default function Home() {
         <h2>Featured Projects</h2>
 <div className="project-card">
   <p className="project-number">01</p>
-  <h3>High Power Rocketry</h3>
+  <h3>
+  <a href="/projects/rocketry">
+    High Power Rocketry
+  </a>
+</h3>
   <p>
     Active member of a rocketry program focused on rocket design,
     construction, testing, and certification. Developing experience
@@ -104,13 +115,20 @@ export default function Home() {
 </section>
 
       <section id="contact">
-        <h2>Contact</h2>
+  <h2>Contact</h2>
 
-        <p>
-          Interested in connecting? You can find me through my professional
-          profiles or contact me directly.
-        </p>
-      </section>
+  <p>
+    Interested in connecting? Feel free to reach out.
+  </p>
+
+  <a href="https://github.com/JLenderm">
+    GitHub
+  </a>
+
+  <a href="https://www.linkedin.com/in/jonah-lenderman-59589540b/">
+    LinkedIn
+  </a>
+</section>
     </main>
   );
 }
