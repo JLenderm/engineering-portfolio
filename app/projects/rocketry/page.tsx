@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Rocketry() {
   return (
     <main>
@@ -30,6 +32,31 @@ export default function Rocketry() {
         Future additions will include flight data, CAD models,
         certification progress, and testing results.
       </p>
+
+      <h2>Project Gallery</h2>
+
+      <div className="project-gallery">
+        <Image
+          src="/projects/rocketry/approval.JPG"
+          alt="Rocket assembly process"
+          width={900}
+          height={600}
+        />
+
+        <Image
+          src="/projects/rocketry/Data-Retrieval.JPG"
+          alt="Rocket launch"
+          width={900}
+          height={600}
+        />
+
+        <Image
+          src="/projects/rocketry/Review_station.jpeg"
+          alt="Rocket CAD model"
+          width={900}
+          height={600}
+        />
+      </div>
     </main>
   );
 }
