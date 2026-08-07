@@ -19,9 +19,9 @@ export default function Home() {
 <h1>Jonah Lenderman</h1>
 
 <p className="hero-text">
-  I am an engineering student passionate about aerospace systems,
-  rocket design, and solving complex technical problems through
-  hands-on design and testing.
+  Hi my name is Jonah, I'm currently attending Texas Tech University pursuing a degree in Aerospace Engineering.
+  I have a strong interest in rocketry, propulsion, and vehicle systems.
+  I hope to pursue a career in Aerospace, specifically in the field of rocketry and propulsion. 
 </p>
 
 <p className="hero-text">
@@ -122,11 +122,11 @@ export default function Home() {
   </p>
 
   <a href="https://github.com/JLenderm">
-    GitHub
+    GitHub 
   </a>
 
   <a href="https://www.linkedin.com/in/jonah-lenderman-59589540b/">
-    LinkedIn
+     LinkedIn
   </a>
 </section>
     </main>
