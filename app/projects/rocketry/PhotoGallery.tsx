@@ -2,19 +2,57 @@
 
 import { useState } from "react";
 
-const photos = [
-  { src: "/projects/rocketry/approval.JPG", title: "Rocket Approval" },
-  { src: "/projects/rocketry/Data-Retrieval.JPG", title: "Data Retrieval" },
-  { src: "/projects/rocketry/Review_station.jpeg", title: "Review Station" },
-  { src: "/projects/rocketry/Team_photo.JPEG", title: "Rocket Team" },
+// Add your media + captions here:
+// - Use type: "image" for JPG/PNG files
+// - Use type: "video" for MP4/WebM files
+// - Replace each caption text with your own
+const mediaItems = [
+  {
+    type: "image",
+    src: "/projects/rocketry/approval.JPG",
+    title: "Rocket Approval",
+    caption: "Add your caption for this image here.",
+  },
+  {
+    type: "image",
+    src: "/projects/rocketry/Data-Retrieval.JPG",
+    title: "Data Retrieval",
+    caption: "Add your caption for this image here.",
+  },
+  {
+    type: "video",
+    src: "/projects/rocketry/Crayon.mp4",
+    title: "Senior Flight",
+    caption: "Add your caption for this video here.",
+  },
+  {
+    type: "image",
+    src: "/projects/rocketry/Review_station.jpeg",
+    title: "Review Station",
+    caption: "Add your caption for this image here.",
+  },
+  {
+    type: "video",
+    src: "/projects/rocketry/Icaurus.mp4",
+    title: "Junior Flight",
+    caption: "Add your caption for this video here.",
+  },
+  {
+    type: "image",
+    src: "/projects/rocketry/Team_photo.JPEG",
+    title: "Rocket Team",
+    caption: "Add your caption for this image here.",
+  },
 ];
 
 export default function PhotoGallery() {
   const [current, setCurrent] = useState(0);
 
-  const next = () => setCurrent((prev) => (prev + 1) % photos.length);
+  const next = () => setCurrent((prev) => (prev + 1) % mediaItems.length);
   const previous = () =>
-    setCurrent((prev) => (prev - 1 + photos.length) % photos.length);
+    setCurrent((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
+
+  const currentItem = mediaItems[current];
 
   return (
     <section
@@ -34,15 +72,15 @@ export default function PhotoGallery() {
           background: "#f3f3f3",
         }}
       >
-        {photos.map((photo, index) => {
-          const offset = (index - current + photos.length) % photos.length;
+        {mediaItems.map((item, index) => {
+          const offset = (index - current + mediaItems.length) % mediaItems.length;
           const normalized =
-            offset > photos.length / 2 ? offset - photos.length : offset;
+            offset > mediaItems.length / 2 ? offset - mediaItems.length : offset;
           const active = normalized === 0;
 
           return (
             <div
-              key={photo.src}
+              key={`${item.type}-${item.src}`}
               style={{
                 position: "absolute",
                 left: "50%",
@@ -58,25 +96,41 @@ export default function PhotoGallery() {
                   ? "0 20px 50px rgba(0,0,0,0.18)"
                   : "0 10px 30px rgba(0,0,0,0.12)",
                 zIndex: 10 - Math.abs(normalized),
+                background: "#111111",
               }}
             >
-              <img
-                src={photo.src}
-                alt={photo.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
+              {item.type === "image" ? (
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              ) : (
+                <video
+                  src={item.src}
+                  controls
+                  preload="metadata"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    background: "#000000",
+                  }}
+                />
+              )}
             </div>
           );
         })}
 
         <button
           onClick={previous}
-          aria-label="Previous photo"
+          aria-label="Previous media"
           style={{
             position: "absolute",
             left: 16,
@@ -98,7 +152,7 @@ export default function PhotoGallery() {
 
         <button
           onClick={next}
-          aria-label="Next photo"
+          aria-label="Next media"
           style={{
             position: "absolute",
             right: 16,
@@ -128,14 +182,17 @@ export default function PhotoGallery() {
           marginTop: 18,
         }}
       >
-        <h3 style={{ margin: 0, color: "#111111" }}>{photos[current].title}</h3>
+        <h3 style={{ margin: 0, color: "#111111" }}>{currentItem.title}</h3>
+        <p style={{ margin: 0, color: "#444444", textAlign: "center" }}>
+          {currentItem.caption}
+        </p>
 
         <div style={{ display: "flex", gap: 10 }}>
-          {photos.map((_, index) => (
+          {mediaItems.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              aria-label={`Go to photo ${index + 1}`}
+              aria-label={`Go to media ${index + 1}`}
               style={{
                 width: index === current ? 12 : 10,
                 height: index === current ? 12 : 10,
